@@ -1,0 +1,56 @@
+<h2>Cadastrar Tarefas:</h2>
+<hr>
+<form>
+  <p>Nome: <input type="text" name="nome" [(ngModel)]="tarefa.nome"></p>
+  <p>Descrição: <input type="text" name="descricao" [(ngModel)]="tarefa.descricao"></p>
+  <p>
+    Status:
+    <select name="status" [(ngModel)]="tarefa.status">
+      <option value=1>A Fazer</option>
+      <option value=2>Em Andamento</option>
+      <option value=3>Concluído</option>
+    </select>
+  </p>
+  <p>UsuarioId: <input type="number" name="usuarioId" [(ngModel)]="tarefa.usuarioId"></p>
+  <button type="button" (click)="Cadastrar()">Registrar</button>
+</form>
+
+<h2>Tarefas Registradas:</h2>
+<hr>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Nome</th>
+    <th>Descrição</th>
+    <th>Status</th>
+    <th>UsuarioId</th>
+    <th>Usuario</th>
+    <th>Ações</th>
+  </tr>
+
+  <tr *ngFor="let tarefa of tarefas">
+    <td (click)="openModal(tarefa)">{{ tarefa.id }}</td>
+    <td (click)="openModal(tarefa)">{{ tarefa.nome }}</td>
+    <td (click)="openModal(tarefa)">{{ tarefa.descricao }}</td>
+    <td (click)="openModal(tarefa)">{{ tarefa.status }}</td>
+    <td (click)="openModal(tarefa)">{{ tarefa.usuarioId }}</td>
+    <td (click)="openModal(tarefa)">{{ tarefa.usuario?.nome }}</td>
+    <td>
+      <button (click)="atualizar(tarefa.id)">Atualizar</button>
+      <button (click)="remover(tarefa.id)">Remover</button>
+    </td>
+  </tr>
+</table>
+
+<!-- Modal -->
+<div class="modal" [class.open]="isModalOpen">
+  <div class="modal-content">
+    <h2>Detalhes da Tarefa</h2>
+    <p><strong>Nome:</strong> {{ selectedTarefa?.nome }}</p>
+    <p><strong>Descrição:</strong> {{ selectedTarefa?.descricao }}</p>
+    <p><strong>Status:</strong> {{ selectedTarefa?.status }}</p>
+    <p><strong>UsuarioId:</strong> {{ selectedTarefa?.usuarioId }}</p>
+    <p><strong>Objeto de Usuário:</strong> {{ selectedTarefa?.usuario | json }}</p>
+    <button class="modal-close" (click)="closeModal()">Fechar</button>
+  </div>
+</div>

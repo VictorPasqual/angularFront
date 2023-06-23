@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\angularFront",
+    "\\angularFront\\src",
+    "\\angularFront\\src\\app",
+    "\\angularFront\\src\\app\\services",
+    "\\angularFront\\src\\app\\tarefas",
+    "\\angularFront\\src\\app\\usuarios",
+    "\\angularFront\\src\\environments"
+  ],
+  "SelectedNode": "\\angularFront\\src\\app\\tarefas\\tarefas.component.html",
+  "PreviewInSolutionExplorer": false
+}
